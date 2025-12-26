@@ -1,27 +1,36 @@
-#include<iostream>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+
 using namespace std;
 
-int main(){
-	int count[5] = {}; //Declare array count for counting A,B,C,D,F and initialize all element = 0
-	cout << "Please input grade of each student (A-F) or input 0 to exit.";
-	do{
-		cout << "Student [" << "]: ";
-		cin >> grade; //The loop must be terminated when grade = '0'
-		if(true) // if grade is A
-			//Do something
-		}else if(true) // if grade is B
-			//Do something
-		//and so on ... for grade = C, D, F	
-		}else{ // grade is wrong input
-			//Do something
-		} 
-	}while(true);
-	
-	
-	cout << "In total ? students.";
-	cout << "A = " << count[0] <<", ";
-	cout << "B = " << count[1] <<", ";	
-	//	and so on ... for grade = C, D, F	
-	
-	return 0;
+int main() {
+    int count = 0;
+    double sum = 0;
+    double sum_sq = 0;
+    double score;
+    
+    ifstream source("score.txt");
+    
+
+    while (source >> score) {
+        sum += score;       
+        sum_sq += score * score; 
+        count++;                
+    }
+
+
+    double mean = sum / count;
+    double sd = sqrt((sum_sq / count) - (mean * mean));
+
+หนด
+    cout << "Number of data = " << count << endl;
+    cout << setprecision(3); 
+    cout << "Mean = " << mean << endl;
+    cout << "Standard deviation = " << sd << endl;
+
+    source.close();
+    return 0;
 }
