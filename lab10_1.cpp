@@ -1,36 +1,47 @@
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <cmath>
-#include <iomanip>
-
 using namespace std;
 
 int main() {
-    int count = 0;
-    double sum = 0;
-    double sum_sq = 0;
-    double score;
-    
-    ifstream source("score.txt");
-    
+    int count = 1; คนแรก
+    char grade;
 
-    while (source >> score) {
-        sum += score;       
-        sum_sq += score * score; 
-        count++;                
-    }
+    int countA = 0, countB = 0, countC = 0, countD = 0, countF = 0;
+
+    cout << "Please input grade of each student (A-F) or input 0 to exit." << endl;
+
+    do {
+        cout << "Student [" << count << "]: ";
+        cin >> grade;
+
+        if (grade == '0') {
+            break;  
+        }
+
+        if (grade == 'A') {
+            countA++;
+            count++; 
+        } else if (grade == 'B') {
+            countB++;
+            count++;
+        } else if (grade == 'C') {
+            countC++;
+            count++;
+        } else if (grade == 'D') {
+            countD++;
+            count++;
+        } else if (grade == 'F') {
+            countF++;
+            count++;
+        } else {
+
+            cout << "Wrong input. Please input again." << endl;
 
 
-    double mean = sum / count;
-    double sd = sqrt((sum_sq / count) - (mean * mean));
+    } while (true);
 
-หนด
-    cout << "Number of data = " << count << endl;
-    cout << setprecision(3); 
-    cout << "Mean = " << mean << endl;
-    cout << "Standard deviation = " << sd << endl;
+    cout << "In total " << count - 1 << " students." << endl;
+    cout << "A = " << countA << ", B = " << countB << ", C = " << countC 
+         << ", D = " << countD << ", F = " << countF << endl;
 
-    source.close();
     return 0;
 }
